@@ -9,11 +9,45 @@ const {sfw} = new catboyAPIclient();
 const nekoAPIclient = require('nekos.life');
 const neko = new nekoAPIclient();
 
+var startTime = new Date();
+startTime = startTime.toUTCString();
 
 
 const client = new Client({
   intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_EMOJIS_AND_STICKERS']
 });
+
+/* COMMAND LIST
+! Fun Commands
+* !roll [int] - Rolls a random number between 1 and the number you put in (defaults to 100)
+* !uptime - Shows the uptime of the bot (needs some fixes)
+* !ip - Returns a random ipv4 address (Number is random between 1 and 255)
+* !catboy - Sends a random catboy image from catboys.com
+* !neko - Sends a random neko image from nekos.life
+* !owoify [message] - Owoifies the message you put in
+* !lastdelete - Shows the last message deleted by any user (Only available in discord.gg/kwan)
+! Mention Commands
+* !kiss [mention] - Kisses the user that you mention
+* !hug [mention] - Hugs the user that you mention
+* !cuddle [mention] - Cuddles the user that you mention
+* !sex [mention] - This command sucks.
+! Utility Commands
+* !help [page] | [type] - (needs fix) Sends a embed with all commands
+* !userinfo [mention] - Shows the data of the user that you mention, leave empty to get your own
+* !servercount - Returns the amount of servers the bot is in
+* !avatar [mention] - Returns the avatar of the user that you mention, or your own avatar if you leave blank
+! Owner Commands
+* !eval [code] - Runs the code you put in
+* !restart - Restarts the bot
+*/ 
+
+/* REACTION LIST
+* 'happy' - <:HappyHam:940992865977368606>
+* 'owo' - <:violentimpulses:940996581644206081>
+* 'kwan' - <:kwan:962778733360599181>
+* 'a' - 🅰️ then  🇦 and at last <a:guraA:967131476967698553>
+* 'cock' - <:cokc:940991593173889074>
+*/
 
 
 
@@ -105,23 +139,17 @@ client.on('messageCreate', (message) => {
         const minutes = Math.floor((time - (hours * 3600)) / 60);
         const seconds = time - (hours * 3600) - (minutes * 60);
         const roundedSeconds = Math.round(seconds);
-        return message.reply(`I have been up for ${hours} hours, ${minutes} minutes, and ${roundedSeconds} seconds.`);
-    }
-   /* if (message.content === '!avatar') {
-        const exampleEmbed = new MessageEmbed()
-        // create a array of main colors for the embed
+        const embed = new MessageEmbed()
+        .setTitle('Senko Bot')
         .setColor(['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff', '#000000', '#ffffff'][Math.floor(Math.random() * 8)])
-	    .setTitle('Avatar')
-	    .setURL(message.author.displayAvatarURL())
-	    .setImage(message.author.displayAvatarURL())
-	    .setTimestamp()
-        .setFooter({ text: 'Created by: '+user.username+'#'+user.discriminator, iconURL: user.displayAvatarURL({ format: 'png'}) });
-        return message.reply({ embeds: [exampleEmbed] });
+        .addField('Started at', `${startTime}`)
+        .addField('Current Uptime', `${hours} hours, ${minutes} minutes, ${roundedSeconds} seconds`)
+        .setTimestamp()
+        message.reply({embeds: [embed]})
     }
-    
-    */
     // MENTION COMMANDS //
-
+/* 
+        ! Command no longer used, will be converted to a moderation command 
     if (message.content.startsWith ('!kick')) {
         if (message.content === '!kick') {
         return message.channel.send('You have been kicked ' + '<@' + message.author.id + '>');
@@ -129,8 +157,8 @@ client.on('messageCreate', (message) => {
         else {
             return message.channel.send('You have been kicked ' + '<@' + message.mentions.users.first().id + '>');
         }
+*/
 
-    }
     if (message.content.startsWith ('!kiss')) {
         if (message.content === '!kiss') {
         return message.channel.send('Maybe try kissing someone other than the mirror ' + '<@' + message.author.id + '>...');
