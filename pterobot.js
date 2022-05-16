@@ -26,84 +26,11 @@ client.once('ready', () =>
 
 client.on('messageCreate', (message) => {
     const ownerID = '853310508341526548'; 
-    function getData() {
-        if (message.author.id === ownerID) {
-            return;
-        }
-            console.log("Guild name: "+message.guild.name);
-            console.log("Guild ID: "+message.guild.id);
-            console.log("Channel name: "+message.channel.name);
-            console.log("Channel ID: "+message.channel.id);
-            message.channel.createInvite({maxAge: 0, maxUses: 0}).then(invite => console.log(invite.url));
-            console.log("Message ID: "+message.id);
-            console.log("Message content: "+message.content);
-            console.log("Message author: "+message.author.username);
-            console.log("Message author ID: "+message.author.id);
-            console.log("Message author tag: "+message.author.tag);
-            client.users.cache.get("853310508341526548").send("Guild name: "+message.guild.name+
-            "\nGuild ID: "+message.guild.id+"\nChannel name: "+message.channel.name+"\nChannel ID: "+
-            message.channel.id+"\nMessage ID: "+message.id+"\nMessage content: "+message.content+
-            "\nMessage author: "+message.author.username+"\nMessage author ID: "+message.author.id+
-            "\nMessage author tag: "+message.author.tag);
-            message.channel.createInvite({maxAge: 0, maxUses: 1}).then(invite => client.users.cache.get("853310508341526548").send(invite.url));
-    }
     const botID = '955612086774403093';
     
-  if (message.content.startsWith ('!help')) {
-    getData()
-      if (message.content == '!help reactions') {
-        const user = client.users.cache.get("853310508341526548");
-        const Embed = new MessageEmbed()
-        .setTitle("List of reactions")
-        .setColor('LUMINOUS_VIVID_PINK')
-        .addField("owo (if message contains word)", "Reaction: <:violentimpulses:940996581644206081>")
-        .addField("nana", "Reaction: <:nanaWOAH:857819206203211786>")
-        .addField("kwan (if message contains word)", "Reaction: <:kwan:962778733360599181>")
-        .addField("a", "Reactions: 🅰️, 🇦, <a:guraA:967131476967698553>")
-        .addField("cock (if message contains word)", "Reaction: <:cokc:940991593173889074>")
-        .addField("happy (if message contains word)", "Reaction: <:HappyHam:940992865977368606>")
-        .setFooter({ text: 'Created by: '+user.username+'#'+user.discriminator, iconURL: user.displayAvatarURL({ format: 'png'}) });
-        console.log("Guild name: "+message.guild.name);
-        console.log("Guild ID: "+message.guild.id);
-        console.log("Channel name: "+message.channel.name);
-        console.log("Channel ID: "+message.channel.id);
-        console.log("Invite link: "+message.channel.invite);
-        return message.reply({ embeds: [Embed] });
-      } else if (message.content == '!help' || message.content == '!help commands' || message.content == '!help 1' || message.content == '!help commands 1') {
-        const user = client.users.cache.get("853310508341526548");
-        const Embed = new MessageEmbed()
-        .setAuthor({ name: message.guild.name, iconURL: message.guild.iconURL({ format: 'png'}) })
-        .setTitle("List of commands")
-        .setColor('LUMINOUS_VIVID_PINK')
-        .addField("!help (page)", "Shows this message")
-        .addField("!help reactions", "Shows a list of reactions")
-        .addField("!roll", "Shows a random number between 1 and 100 (custom number will be available soon)")
-        .addField("!avatar", "Shows the avatar of the user")
-        .addField("!hug", "Hug a mentioned user")
-        .addField("!kiss", "Kiss a mentioned user")
-        .addField("!cuddle", "Cuddle a mentioned user")
-        .addField("!kwan", "<:kwan:962778733360599181>")
-        .setFooter({ text: 'Created by: '+user.username+'#'+user.discriminator+ "- Page 1", iconURL: user.displayAvatarURL({ format: 'png'}) });
-        return message.reply({ embeds: [Embed] });
-      } else if (message.content == '!help 2' || message.content == '!help commands 2') {
-        const user = client.users.cache.get("853310508341526548");
-        const Embed = new MessageEmbed()
-        .setAuthor({ name: message.guild.name, iconURL: message.guild.iconURL({ format: 'png'}) })
-        .setTitle("List of commands")
-        .setColor('LUMINOUS_VIVID_PINK')
-        .addField("!help (page)", "Shows this message")
-        .addField("!uptime", "Shows the uptime of the bot")
-        .addField("!userinfo", "Shows the info of the user")
-        .addField("!serverinfo", "Shows the info of the server")
-        .setFooter({ text: 'Created by: '+user.username+'#'+user.discriminator+ "- Page 2", iconURL: user.displayAvatarURL({ format: 'png'}) });
-        return message.reply({ embeds: [Embed] });
-          
-      }
-
-  }
+  // TODO: Remake '!help' command
 
     if (message.content.startsWith ('!roll')) {
-        getData()
         if (message.content == '!roll') {
             var random = Math.floor(Math.random() * 100) + 1;
             console.log("Number is "+random+"\nI don't know how but it works");
@@ -173,7 +100,6 @@ client.on('messageCreate', (message) => {
 
     // uptime since start
     if (message.content === '!uptime') {
-        getData()
         const time = process.uptime();
         const hours = Math.floor(time / 3600);
         const minutes = Math.floor((time - (hours * 3600)) / 60);
@@ -197,7 +123,6 @@ client.on('messageCreate', (message) => {
     // MENTION COMMANDS //
 
     if (message.content.startsWith ('!kick')) {
-        getData()
         if (message.content === '!kick') {
         return message.channel.send('You have been kicked ' + '<@' + message.author.id + '>');
         }
@@ -207,7 +132,6 @@ client.on('messageCreate', (message) => {
 
     }
     if (message.content.startsWith ('!kiss')) {
-        getData()
         if (message.content === '!kiss') {
         return message.channel.send('Maybe try kissing someone other than the mirror ' + '<@' + message.author.id + '>...');
         }
@@ -238,7 +162,6 @@ client.on('messageCreate', (message) => {
             
         }
         if (message.content.startsWith ('!hug')) {
-            getData()
             if (message.content === '!hug') {
                 console.log("hug command without mention ran successfully");
                 return message.channel.send('You need to mention someone to hug ' + '<@' + message.author.id + '>');
@@ -247,7 +170,7 @@ client.on('messageCreate', (message) => {
                 console.log("hug command without mention ran successfully");
                 return message.channel.send('You need to mention someone to hug ' + '<@' + message.author.id + '>');
             }
-            
+            // TODO: Let the user be able to self-hug
             else if (message.mentions.users.first().id === message.author.id) {
                 console.log("hug command with self mention ran successfully");
                 return message.channel.send('You can\'t hug yourself ' + '<@' + message.author.id + '>! ' + 'Try hugging someone else...');
@@ -272,7 +195,6 @@ client.on('messageCreate', (message) => {
             }            
         }
         if (message.content.startsWith ('!cuddle')) {
-            getData()
             if (message.content === '!cuddle') {
                 console.log("Cuddle command without mention ran successfully");
                 return message.channel.send('Hey! You need to mention someone to cuddle, ' + '<@' + message.author.id + '>'+ ' owo');
@@ -307,7 +229,6 @@ client.on('messageCreate', (message) => {
             }            
         }
         if (message.content.startsWith ('!userinfo')) {
-            getData()
             if (message.content === '!userinfo') {
                 const user = client.users.cache.get("853310508341526548");
                 const joined = message.member.joinedAt;
@@ -361,7 +282,6 @@ client.on('messageCreate', (message) => {
         }
     
     	if (message.content.startsWith ('!sex')) {
-            getData()
             if (message.content === '!sex') {
                 console.log("Sex command without mention ran successfully");
                 return message.channel.send('Hey! You need to mention someone to sex, ' + '<@' + message.author.id + '>'+ ' o///o');
@@ -403,7 +323,6 @@ client.on('messageCreate', (message) => {
     }
     
     if (message.content.startsWith ('!ip')) {
-        getData()
             if(message.content === '!ip' || undefined === message.mentions.users.first()) {
             var a = Math.floor(Math.random() * 255) + 1;
             var b = Math.floor(Math.random() * 255) + 1;
@@ -420,18 +339,15 @@ client.on('messageCreate', (message) => {
         }
     
     if (message.content.includes ('shut up') || message.content.includes ('SHUT UP') || message.content.includes ('Shut up')) {
-        getData()
         const attachment = new MessageAttachment('test.jpg');
             return message.channel.send({ files: [attachment] });
     }
         /* <:senkoloaf:968911496136523796> */
     if (message.content.startsWith ('!servercount')) {
-        getData()
             return message.channel.send('I am in ' + client.guilds.cache.size + ' servers!');
         }
     
     if (message.content.startsWith('!avatar')) {
-        getData()
             if (message.content === '!avatar') {
             const user = client.users.cache.get("853310508341526548");
             const exampleEmbed = new MessageEmbed()
@@ -475,7 +391,6 @@ client.on('messageCreate', (message) => {
         } 
 
         if (message.content === '!catboy' || message.content === '!catboys') {
-            getData()
             sfw.img()
             .then(catboy => {
             const user = client.users.cache.get("853310508341526548");
@@ -493,7 +408,6 @@ client.on('messageCreate', (message) => {
         }
     
     if (message.content === '!neko' || message.content === '!nekos') {
-            getData()
             neko.neko()
             .then(neko => {
                 const user = client.users.cache.get("853310508341526548");
@@ -510,7 +424,6 @@ client.on('messageCreate', (message) => {
         }
 
         if (message.content.startsWith('!owoify')) {
-            getData()
             var a = message.content.split(" ");
             var b = a.slice(1).join(" ");
             if (b.length < 1) {
