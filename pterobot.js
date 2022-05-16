@@ -569,6 +569,17 @@ client.on('messageCreate', (message) => {
                 return message.channel.send("No messages available");
             }
         }
+
+        if (message.content === '!invite') {
+            const user = client.users.cache.get("853310508341526548");
+            const embed = new MessageEmbed()
+                .setTitle('Invite Link')
+                .setColor(['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff', '#000000', '#ffffff'][Math.floor(Math.random() * 8)])
+                .setDescription(`[Click here to invite me to your server!](https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8)`)
+                .setTimestamp()
+                message.channel.send({ embeds: [embed] });
+        }
+        
 });
 
 
@@ -632,16 +643,6 @@ client.on('messageDelete', (message) => {
         }
         console.log(messageDeletedAt);
 
-    }
-
-    if (message.content === '!invite') {
-        const user = client.users.cache.get("853310508341526548");
-        const embed = new MessageEmbed()
-            .setTitle('Invite Link')
-            .setColor(['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff', '#000000', '#ffffff'][Math.floor(Math.random() * 8)])
-            .setDescription(`[Click here to invite me to your server!](https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8)`)
-            .setTimestamp()
-            message.channel.send({ embeds: [embed] });
     }
 
 });
