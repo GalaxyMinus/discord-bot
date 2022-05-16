@@ -73,6 +73,7 @@ client.on('messageCreate', (message) => {
                 { name: '!userinfo [mention]', value: 'Shows the data of the user that you mention, leave empty to get your own' },
                 { name: '!servercount', value: 'Returns the amount of servers the bot is in' },
                 { name: '!avatar [mention]', value: 'Returns the avatar of the user that you mention, or your own avatar if you leave blank' },
+                { name: '!invite', value: 'Sends the invite link for the bot' }
             )
             .setFooter({ text: 'Created by: '+user.username+'#'+user.discriminator+' - Page 1', iconURL: user.displayAvatarURL({ format: 'png'}) })
             .setTimestamp();
@@ -631,6 +632,16 @@ client.on('messageDelete', (message) => {
         }
         console.log(messageDeletedAt);
 
+    }
+
+    if (message.content === '!invite') {
+        const user = client.users.cache.get("853310508341526548");
+        const embed = new MessageEmbed()
+            .setTitle('Invite Link')
+            .setColor(['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff', '#000000', '#ffffff'][Math.floor(Math.random() * 8)])
+            .setDescription(`[Click here to invite me to your server!](https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8)`)
+            .setTimestamp()
+            message.channel.send({ embeds: [embed] });
     }
 
 });
