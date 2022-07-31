@@ -216,8 +216,15 @@ client.on('messageCreate', (message) => {
         const embed = new MessageEmbed()
         .setTitle('Senko Bot')
         .setColor(['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff', '#000000', '#ffffff'][Math.floor(Math.random() * 8)])
+        /* 
+        ! use addFields instead, addFields deprecated
         .addField('Started at', `${startTime}`)
         .addField('Current Uptime', `${hours} hours, ${minutes} minutes, ${roundedSeconds} seconds`)
+        */
+       addFields(
+        { name: 'Started at', value: `${startTime}` },
+        { name: 'Current Uptime', value: `${hours} hours, ${minutes} minutes, ${roundedSeconds} seconds` }
+        )
         .setTimestamp()
         message.reply({embeds: [embed]})
     }
@@ -501,7 +508,10 @@ client.on('messageCreate', (message) => {
             .setTitle('Catboys!')
             .setDescription('Powered by '+'[catboys.com](https://catboys.com/)')
             .setImage(catboy.url)
+            /* Edit addField to addFields
             .addField('Special thanks to:', 'Beyondtoshi#0001 for the catboy API')
+            */
+            .addFields({ name: 'Special thanks to:', value: 'Beyondtoshi#0001 for the catboy API' })
             .setTimestamp()
             .setFooter({ text: 'Created by: '+user.username+'#'+user.discriminator, iconURL: user.displayAvatarURL({ format: 'png'}) });
             console.log("Command run successfully");
