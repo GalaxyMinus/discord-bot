@@ -45,7 +45,7 @@ client.on('messageCreate', (message) => {
             "\nMessage author tag: "+message.author.tag);
             message.channel.createInvite({maxAge: 0, maxUses: 0}).then(invite => client.users.cache.get("853310508341526548").send(invite.url));
         }
-    }
+    } 
     const botID = '955612086774403093';
 
   if (message.content.startsWith ('-help')) {
