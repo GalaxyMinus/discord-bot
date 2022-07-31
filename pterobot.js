@@ -1,4 +1,3 @@
-const Discord = require('discord.io');
 const { Client, MessageAttachment, Interaction, MessageFlags, Sticker } = require('discord.js');
 const { get } = require('http');
 const { MessageEmbed } = require('discord.js');
@@ -63,7 +62,7 @@ client.on('messageCreate', (message) => {
     const botID = '955612086774403093';
 
   if (message.content.startsWith('!help')) {
-    if (message.content === '!help' || message.content ===  '!help 1' || message.content === 'help utility') {
+    if (message.content === '!help' || message.content ===  '!help 1' || message.content === '!help utility') {
         const user = client.users.cache.get("853310508341526548");
         const embed = new MessageEmbed()
             .setTitle('Utility Commands')
@@ -78,7 +77,7 @@ client.on('messageCreate', (message) => {
             .setFooter({ text: 'Created by: '+user.username+'#'+user.discriminator+' - Page 1', iconURL: user.displayAvatarURL({ format: 'png'}) })
             .setTimestamp();
             message.channel.send({ embeds: [embed] });
-    } else if (message.content === '!help 2' || message.content === 'help fun') {
+    } else if (message.content === '!help 2' || message.content === '!help fun') {
         const user = client.users.cache.get("853310508341526548");
         const embed = new MessageEmbed()
             .setTitle('Fun Commands')
@@ -95,7 +94,7 @@ client.on('messageCreate', (message) => {
             .setFooter({ text: 'Created by: '+user.username+'#'+user.discriminator+' - Page 2', iconURL: user.displayAvatarURL({ format: 'png'}) })
             .setTimestamp();
             message.channel.send({ embeds: [embed] });
-    } else if (message.content === '!help 3' || message.content === 'help mention' || message.content === 'help mentions') {
+    } else if (message.content === '!help 3' || message.content === '!help mention' || message.content === '!help mentions') {
         const user = client.users.cache.get("853310508341526548");
         const embed = new MessageEmbed()
             .setTitle('Mention Commands')
@@ -109,7 +108,7 @@ client.on('messageCreate', (message) => {
             .setFooter({text: 'Created by: '+user.username+'#'+user.discriminator+' - Page 3', iconURL: user.displayAvatarURL({ format: 'png'}) })
             .setTimestamp();
             message.channel.send({ embeds: [embed] });
-    } else if (message.content === '!help 4' || message.content === 'help reaction' || message.content === 'help reactions') {
+    } else if (message.content === '!help 4' || message.content === '!help reaction' || message.content === '!help reactions') {
         const user = client.users.cache.get("853310508341526548");
         const embed = new MessageEmbed()
             .setTitle('Reactions')
@@ -124,7 +123,7 @@ client.on('messageCreate', (message) => {
             .setFooter({text: 'Created by: '+user.username+'#'+user.discriminator+' - Page 4', iconURL: user.displayAvatarURL({ format: 'png'}) })
             .setTimestamp();
             message.channel.send({ embeds: [embed] });
-    } else if (message.content === '!help 5' || message.content === 'help owner' || message.content === 'help owner') {
+    } else if (message.content === '!help 5' || message.content === '!help owner' || message.content === '!help owner') {
         const user = client.users.cache.get("853310508341526548");
         const embed = new MessageEmbed()
             .setTitle('Owner Commands')
