@@ -221,7 +221,7 @@ client.on('messageCreate', (message) => {
         .addField('Started at', `${startTime}`)
         .addField('Current Uptime', `${hours} hours, ${minutes} minutes, ${roundedSeconds} seconds`)
         */
-       addFields(
+        .addFields(
         { name: 'Started at', value: `${startTime}` },
         { name: 'Current Uptime', value: `${hours} hours, ${minutes} minutes, ${roundedSeconds} seconds` }
         )
