@@ -481,7 +481,7 @@ client.on('messageCreate', (message) => {
     if (message.content.includes ('shut up') || message.content.includes ('SHUT UP') || message.content.includes ('Shut up')) {
         try {
             const attachment = new MessageAttachment('test.jpg');
-                return message.channel.send({ files: [attachment] });
+            message.channel.send({ files: [attachment] });
         } catch (error) {
             console.log(error);
         }
@@ -581,6 +581,24 @@ client.on('messageCreate', (message) => {
                     console.log();
                     return message.reply({ embeds: [embed] });
                 })
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        if (message.content.startsWith('!say')) {
+            try {
+                if (message.author.bot) {
+                    return;
+                }
+                var a = message.content.split(" ");
+                console.log(a);
+                var b = a.slice(1).join(" ");
+                if (b.length < 1) {
+                    return false;
+                }
+                message.channel.send(b);
+                console.log(b)
             } catch (error) {
                 console.log(error);
             }
