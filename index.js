@@ -90,6 +90,7 @@ client.on('messageCreate', (message) => {
                     { name: '!catboy', value: 'Sends a random catboy image from catboys.com' },
                     { name: '!neko', value: 'Sends a random neko image from nekos.life' },
                     { name: '!owoify [message]', value: 'Owoifies the message you put in' },
+                    { name: '!say [message]', value: 'Sends whatever you want the bot to say' },
                     { name: '!lastdelete', value: 'Shows the last message deleted by any user (Only available in discord.gg/kwan at the moment)' },
                 )
                 .setFooter({ text: 'Created by: '+user.username+'#'+user.discriminator+' - Page 2', iconURL: user.displayAvatarURL({ format: 'png'}) })
