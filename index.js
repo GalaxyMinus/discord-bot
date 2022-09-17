@@ -105,6 +105,7 @@ client.on('messageCreate', (message) => {
                     { name: '!kiss [mention]', value: 'Kisses the user that you mention' },
                     { name: '!hug [mention]', value: 'Hugs the user that you mention' },
                     { name: '!cuddle [mention]', value: 'Cuddles the user that you mention' },
+                    { name: '!nom [mention]', value: 'Noms the user that you mention, Warning! its painful' },
                     { name: '!sex [mention]', value: 'This command sucks.' }
                 )
                 .setFooter({text: 'Created by: '+user.username+'#'+user.discriminator+' - Page 3', iconURL: user.displayAvatarURL({ format: 'png'}) })
@@ -350,6 +351,45 @@ client.on('messageCreate', (message) => {
                     }
                 else {
                     console.error('error in hugs command');
+                }
+            } catch (error) {
+                console.log(error);
+            }            
+        }
+
+        if (message.content.startsWith ('!nom')) {
+            try {
+                if (message.content === '!nom') {
+                    console.log("Nom command without mention ran successfully");
+                    return message.channel.send('Hey! You need to mention someone to use this command, ' + '<@' + message.author.id + '>'+ ' >:3');
+                }
+                else if (undefined === message.mentions.users.first()) {
+                    console.log("Cuddle command without mention ran successfully");
+                    return message.channel.send('Hey! You need to mention someone to use this command, ' + '<@' + message.author.id + '>'+ ' >:3');
+                }
+                else if (message.mentions.users.first().id === message.author.id) {
+                    console.log("Cuddle command with self mention ran successfully");
+                    return message.channel.send('You cannot nom yourself, it would be painful! ' + '<@' + message.author.id + '>! ' + 'Maybe you can try with someone else... >:3');
+                }
+                else if (message.mentions.users.first().id != 'undefined') {
+                        const user = client.users.cache.get("853310508341526548");
+                        const Embed = new MessageEmbed()
+                    // create a array of main colors for the embed
+                    .setColor(['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff', '#000000', '#ffffff'][Math.floor(Math.random() * 8)])
+                    .setDescription('<@' + message.mentions.users.first().id  + '>' + ' has received a bite from ' + '<@' + message.author.id + '>! ' + 'Ouch! :<')
+                    .setImage([
+                    'https://c.tenor.com/9dOzFGFZxnoAAAAC/bite-anime.gif','https://c.tenor.com/diRQGFt9T1EAAAAC/nom-kiwi-nom.gif',
+                    'https://c.tenor.com/Nk-Eq8_ZiNwAAAAC/index-toaru.gif','https://c.tenor.com/6mvKb4vf0SoAAAAC/wholesome-nom-nom-nom-nom.gif',
+                    'https://c.tenor.com/BOaUJB-g6UEAAAAC/nom-furrie.gif','https://c.tenor.com/6HhJw-4zmQUAAAAC/anime-bite.gif',
+                    'https://c.tenor.com/IKDf1NMrzsIAAAAC/anime-acchi-kocchi.gif','https://c.tenor.com/ECCpi63jZlUAAAAC/anime-bite.gif'
+                    ][Math.floor(Math.random() * 8)])
+                    .setTimestamp()
+                    .setFooter({ text: 'Created by: '+user.username+'#'+user.discriminator, iconURL: user.displayAvatarURL({ format: 'png'}) });
+                    console.log("cuddle command ran successfully");
+                    return message.channel.send({ embeds: [Embed] });
+                    }
+                else {
+                    console.error('error in nom command???');
                 }
             } catch (error) {
                 console.log(error);
